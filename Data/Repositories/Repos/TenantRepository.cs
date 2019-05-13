@@ -74,7 +74,7 @@ namespace Data.Repositories.Repos
             }
         }
 
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetSingle()
         {
             try
             {

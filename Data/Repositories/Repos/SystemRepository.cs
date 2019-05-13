@@ -10,12 +10,12 @@ using System.Text;
 
 namespace Data.Repositories.Repos
 {
-    public class SytemRepository<T> : IRepository<T>
+    public class SystemRepository<T> : IRepository<T>
         where T : EntityBase, new()
     {
         private readonly SystemDbContext _context;
 
-        public SytemRepository(SystemDbContext context)
+        public SystemRepository(SystemDbContext context)
         {
             _context = context;
         }
@@ -76,7 +76,7 @@ namespace Data.Repositories.Repos
             }
         }
 
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetSingle()
         {
             try
             {
