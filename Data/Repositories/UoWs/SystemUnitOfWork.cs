@@ -1,5 +1,7 @@
 ﻿using Data.Abstracts;
 using Data.Contexts;
+using Data.Entities;
+using Data.Repositories.Repos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,23 +9,28 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories.UoWs
 {
-    public class SystemUnitOfWork : ISystemUnitOfWork
+    public class SystemUnitOfWork : SystemRepository<Tenant>,ISystemUnitOfWork
     {
-        private readonly TenantDbContext _tenantDbContext;
+        private readonly SystemDbContext _systemDbContext;
 
-        public SystemUnitOfWork(TenantDbContext tenantDbContext)
+        public SystemUnitOfWork(SystemDbContext systemDbContext) : base(systemDbContext)
         {
-            _tenantDbContext = tenantDbContext;
+            _systemDbContext = systemDbContext;
+        }
+
+        public Tenant GetTenant(string domain)
+        {
+            return GetSingle(x=>x.SubDomain == domain);
         }
 
         public void Save()
         {
-            _tenantDbContext.SaveChanges();
+            _systemDbContext.SaveChanges();
         }
 
         public async Task SaveAsync()
         {
-            await _tenantDbContext.SaveChangesAsync();
+            await _systemDbContext.SaveChangesAsync();
         }
     }
 }

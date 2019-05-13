@@ -19,21 +19,30 @@ namespace MultiTenantSaas.Infrastructures.Helpers.DbHelpers
                 systemDbContext.Database.Migrate();
 
 
-                var tenantDbContext = serviceScope.ServiceProvider.GetRequiredService<TenantDbContext>();
-                tenantDbContext.Database.Migrate();
+                //var tenantDbContext = serviceScope.ServiceProvider.GetRequiredService<TenantDbContext>();
+                //tenantDbContext.Database.Migrate();
 
                 //Seeding code goes here
 
-                if (!tenantDbContext.Tenants.Any())
+                if (!systemDbContext.Tenants.Any())
                 {
                     foreach (var tenant in SeedData.GetTestTenants())
                     {
-                        tenantDbContext.Tenants.Add(tenant);
+                        systemDbContext.Tenants.Add(tenant);
                     }
 
-                    tenantDbContext.SaveChanges();
+                    systemDbContext.SaveChanges();
                 }
 
+                //if (!tenantDbContext.Customer.Any())
+                //{
+                //    foreach (var customer in SeedData.GetTextCustomers())
+                //    {
+                //        tenantDbContext.Customer.Add(customer);
+                //    }
+
+                //    tenantDbContext.SaveChanges();
+                //}
             }
         }
     }

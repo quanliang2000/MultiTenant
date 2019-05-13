@@ -1,6 +1,7 @@
 ﻿using Core.Contants;
 using Core.Enums;
 using Data.Entities;
+using Data.Entities.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,20 @@ namespace MultiTenantSaas.Infrastructures.Helpers.DbHelpers
             };
 
             return tenats;
+        }
+        public static IEnumerable<Customer> GetTextCustomers()
+        {
+            var customer = new List<Customer>
+            {
+                new Customer
+                {
+                    LastUpdated = DateTime.Now,
+                    CreatedDate = DateTime.Now,
+                    Message = "Hello Tenant 1"
+                }
+            };
+
+            return customer;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Data.Abstracts
 
         IQueryable<T> GetAllIncluding(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
 
-        IQueryable<T> GetAll();
+        IQueryable<T> GetSingle();
         IQueryable<T> GetAll(int count);
 
         IQueryable<T> GetAll(Expression<Func<T, bool>> predicate);

@@ -17,7 +17,7 @@ namespace MultiTenantSaas.Infrastructures.Extensions
         {
 
             services.AddIdentity<TenantUser, IdentityRole>()
-                .AddEntityFrameworkStores<TenantDbContext>()
+                .AddEntityFrameworkStores<SystemDbContext>()
                 .AddDefaultTokenProviders();
 
 

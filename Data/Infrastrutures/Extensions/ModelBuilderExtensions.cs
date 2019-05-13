@@ -10,8 +10,6 @@ namespace Data.Infrastrutures.Extensions
     {
         public static ModelBuilder TenantConfiguration(this ModelBuilder builder)
         {
-            builder.Entity<Tenant>()
-                .ToTable("Tenant");
 
             return builder;
         }
